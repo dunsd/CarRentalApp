@@ -28,13 +28,148 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtCustName = new System.Windows.Forms.TextBox();
+            this.lblCustName = new System.Windows.Forms.Label();
+            this.dtpDateRented = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateReturned = new System.Windows.Forms.DateTimePicker();
+            this.lblEquipList = new System.Windows.Forms.Label();
+            this.lblDateRented = new System.Windows.Forms.Label();
+            this.cmbEquipList = new System.Windows.Forms.ComboBox();
+            this.lblDateReturned = new System.Windows.Forms.Label();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Georgia", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(201, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(400, 31);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Computer Hardware Rental";
+            // 
+            // txtCustName
+            // 
+            this.txtCustName.Location = new System.Drawing.Point(32, 149);
+            this.txtCustName.Name = "txtCustName";
+            this.txtCustName.Size = new System.Drawing.Size(231, 20);
+            this.txtCustName.TabIndex = 1;
+            // 
+            // lblCustName
+            // 
+            this.lblCustName.AutoSize = true;
+            this.lblCustName.Font = new System.Drawing.Font("Georgia", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustName.Location = new System.Drawing.Point(29, 129);
+            this.lblCustName.Name = "lblCustName";
+            this.lblCustName.Size = new System.Drawing.Size(113, 17);
+            this.lblCustName.TabIndex = 2;
+            this.lblCustName.Text = "Customer Name:";
+            // 
+            // dtpDateRented
+            // 
+            this.dtpDateRented.Location = new System.Drawing.Point(32, 216);
+            this.dtpDateRented.Name = "dtpDateRented";
+            this.dtpDateRented.Size = new System.Drawing.Size(231, 20);
+            this.dtpDateRented.TabIndex = 3;
+            // 
+            // dtpDateReturned
+            // 
+            this.dtpDateReturned.Location = new System.Drawing.Point(357, 216);
+            this.dtpDateReturned.Name = "dtpDateReturned";
+            this.dtpDateReturned.Size = new System.Drawing.Size(231, 20);
+            this.dtpDateReturned.TabIndex = 4;
+            // 
+            // lblEquipList
+            // 
+            this.lblEquipList.AutoSize = true;
+            this.lblEquipList.Font = new System.Drawing.Font("Georgia", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEquipList.Location = new System.Drawing.Point(29, 261);
+            this.lblEquipList.Name = "lblEquipList";
+            this.lblEquipList.Size = new System.Drawing.Size(77, 17);
+            this.lblEquipList.TabIndex = 5;
+            this.lblEquipList.Text = "Equipment";
+            // 
+            // lblDateRented
+            // 
+            this.lblDateRented.AutoSize = true;
+            this.lblDateRented.Font = new System.Drawing.Font("Georgia", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateRented.Location = new System.Drawing.Point(29, 196);
+            this.lblDateRented.Name = "lblDateRented";
+            this.lblDateRented.Size = new System.Drawing.Size(85, 17);
+            this.lblDateRented.TabIndex = 6;
+            this.lblDateRented.Text = "Date Rented";
+            // 
+            // cmbEquipList
+            // 
+            this.cmbEquipList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEquipList.FormattingEnabled = true;
+            this.cmbEquipList.Items.AddRange(new object[] {
+            "Laptop",
+            "Desktop",
+            "Monitor",
+            "Keyboard and Mouse"});
+            this.cmbEquipList.Location = new System.Drawing.Point(32, 281);
+            this.cmbEquipList.Name = "cmbEquipList";
+            this.cmbEquipList.Size = new System.Drawing.Size(231, 21);
+            this.cmbEquipList.TabIndex = 7;
+            // 
+            // lblDateReturned
+            // 
+            this.lblDateReturned.AutoSize = true;
+            this.lblDateReturned.Font = new System.Drawing.Font("Georgia", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateReturned.Location = new System.Drawing.Point(358, 198);
+            this.lblDateReturned.Name = "lblDateReturned";
+            this.lblDateReturned.Size = new System.Drawing.Size(99, 17);
+            this.lblDateReturned.TabIndex = 8;
+            this.lblDateReturned.Text = "Date Returned";
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Font = new System.Drawing.Font("Georgia", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.Location = new System.Drawing.Point(382, 281);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(180, 47);
+            this.btnSubmit.TabIndex = 9;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSubmit);
+            this.Controls.Add(this.lblDateReturned);
+            this.Controls.Add(this.cmbEquipList);
+            this.Controls.Add(this.lblDateRented);
+            this.Controls.Add(this.lblEquipList);
+            this.Controls.Add(this.dtpDateReturned);
+            this.Controls.Add(this.dtpDateRented);
+            this.Controls.Add(this.lblCustName);
+            this.Controls.Add(this.txtCustName);
+            this.Controls.Add(this.label1);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtCustName;
+        private System.Windows.Forms.Label lblCustName;
+        private System.Windows.Forms.DateTimePicker dtpDateRented;
+        private System.Windows.Forms.DateTimePicker dtpDateReturned;
+        private System.Windows.Forms.Label lblEquipList;
+        private System.Windows.Forms.Label lblDateRented;
+        private System.Windows.Forms.ComboBox cmbEquipList;
+        private System.Windows.Forms.Label lblDateReturned;
+        private System.Windows.Forms.Button btnSubmit;
     }
 }
 

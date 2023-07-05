@@ -16,5 +16,18 @@ namespace CarRentalApp
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string custName = txtCustName.Text;
+            string dateRented = dtpDateRented.Value.ToString();
+            string dateReturned = dtpDateReturned.Value.ToString();
+            var hardwareType = cmbEquipList.SelectedItem.ToString();
+
+            MessageBox.Show($"Thank you for renting {custName}!\n\r" +
+                $"You have rented a {hardwareType} from {dateRented}\n\r" +
+                $"Please return this by {dateReturned}");
+            
+        }
     }
 }
