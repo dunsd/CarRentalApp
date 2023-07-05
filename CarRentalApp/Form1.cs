@@ -17,17 +17,53 @@ namespace CarRentalApp
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        //Handle submit of form
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
-            string custName = txtCustName.Text;
-            string dateRented = dtpDateRented.Value.ToString();
-            string dateReturned = dtpDateReturned.Value.ToString();
-            var hardwareType = cmbEquipList.SelectedItem.ToString();
+            try
+            {
+                string custName = txtCustName.Text;
+                DateTime dateRented = dtpDateRented.Value;
+                DateTime dateReturned = dtpDateReturned.Value;
+                var hardwareType = cmbEquipList.Text;
+                double cost = Convert.ToDouble(txtCost.Text);
+                var errorMsg = "";
 
-            MessageBox.Show($"Thank you for renting {custName}!\n\r" +
-                $"You have rented a {hardwareType} from {dateRented}\n\r" +
-                $"Please return this by {dateReturned}");
+                bool formValid = true;
+
+                if (string.IsNullOrWhiteSpace(custName) || string.IsNullOrWhiteSpace(hardwareType))
+                {
+                    errorMsg += "Error: Please enter all the required fields.\n\r";
+                    formValid = false;
+                }
+
+                if (dateRented > dateReturned)
+                {
+                    errorMsg += "Error: Please enter a return date after the rental date.\n\r";
+                    formValid = false;
+                }
+
+                if (formValid == true)
+                {
+                    MessageBox.Show($"Thank you for renting {custName}!\n\r" +
+                                    $"You have rented a {hardwareType} from {dateRented}\n\r" +
+                                    $"Please return this by {dateReturned}\n\r" +
+                                    $"Your cost is: {cost}");
+                }
+                else
+                {
+                    MessageBox.Show(errorMsg);
+                }
+            }
+
+            //catch errors and display in a message box
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);            
+                //throw;
+            }
             
+                      
         }
     }
 }

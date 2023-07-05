@@ -38,6 +38,8 @@
             this.cmbEquipList = new System.Windows.Forms.ComboBox();
             this.lblDateReturned = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.lblCost = new System.Windows.Forms.Label();
+            this.txtCost = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -134,13 +136,32 @@
             this.btnSubmit.TabIndex = 9;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.button1_Click);
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // lblCost
+            // 
+            this.lblCost.AutoSize = true;
+            this.lblCost.Font = new System.Drawing.Font("Georgia", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCost.Location = new System.Drawing.Point(358, 129);
+            this.lblCost.Name = "lblCost";
+            this.lblCost.Size = new System.Drawing.Size(40, 17);
+            this.lblCost.TabIndex = 11;
+            this.lblCost.Text = "Cost:";
+            // 
+            // txtCost
+            // 
+            this.txtCost.Location = new System.Drawing.Point(361, 149);
+            this.txtCost.Name = "txtCost";
+            this.txtCost.Size = new System.Drawing.Size(231, 20);
+            this.txtCost.TabIndex = 10;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblCost);
+            this.Controls.Add(this.txtCost);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.lblDateReturned);
             this.Controls.Add(this.cmbEquipList);
@@ -170,6 +191,8 @@
         private System.Windows.Forms.ComboBox cmbEquipList;
         private System.Windows.Forms.Label lblDateReturned;
         private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Label lblCost;
+        private System.Windows.Forms.TextBox txtCost;
     }
 }
 
