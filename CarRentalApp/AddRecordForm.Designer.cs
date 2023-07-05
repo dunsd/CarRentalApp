@@ -1,6 +1,6 @@
 ﻿namespace CarRentalApp
 {
-    partial class Form1
+    partial class AddRecordForm
     {
         /// <summary>
         /// Required designer variable.

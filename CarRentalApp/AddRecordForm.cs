@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace CarRentalApp
 {
-    public partial class Form1 : Form       
+    public partial class AddRecordForm : Form       
     {
         private readonly HardwareRentalEntities hardwareRentalEntities;
-        public Form1()
+        public AddRecordForm()
         {
             InitializeComponent();
             hardwareRentalEntities = new HardwareRentalEntities();
