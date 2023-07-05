@@ -107,11 +107,6 @@
             // 
             this.cmbEquipList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEquipList.FormattingEnabled = true;
-            this.cmbEquipList.Items.AddRange(new object[] {
-            "Laptop",
-            "Desktop",
-            "Monitor",
-            "Keyboard and Mouse"});
             this.cmbEquipList.Location = new System.Drawing.Point(32, 281);
             this.cmbEquipList.Name = "cmbEquipList";
             this.cmbEquipList.Size = new System.Drawing.Size(231, 21);
