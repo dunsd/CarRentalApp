@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HardwareRentalApp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,13 @@ using System.Windows.Forms;
 
 namespace CarRentalApp
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form       
     {
+        private readonly HardwareRentalEntities hardwareRentalEntities;
         public Form1()
         {
             InitializeComponent();
+            hardwareRentalEntities = new HardwareRentalEntities();
         }
 
         //Handle submit of form
@@ -26,7 +29,7 @@ namespace CarRentalApp
                 DateTime dateRented = dtpDateRented.Value;
                 DateTime dateReturned = dtpDateReturned.Value;
                 var hardwareType = cmbEquipList.Text;
-                double cost = Convert.ToDouble(txtCost.Text);
+                decimal cost = Convert.ToDecimal(txtCost.Text);
                 var errorMsg = "";
 
                 bool formValid = true;
@@ -45,6 +48,16 @@ namespace CarRentalApp
 
                 if (formValid == true)
                 {
+                    var rentalRecord = new HardwareRentalRecord();
+                    rentalRecord.CustName = custName;
+                    rentalRecord.DateRented = dateRented;
+                    rentalRecord.DateReturned = dateReturned;
+                    rentalRecord.Cost = cost;
+                    rentalRecord.TypeOfHardwareId = (int)cmbEquipList.SelectedValue;
+
+                    hardwareRentalEntities.HardwareRentalRecords.Add(rentalRecord);
+                    hardwareRentalEntities.SaveChanges();
+
                     MessageBox.Show($"Thank you for renting {custName}!\n\r" +
                                     $"You have rented a {hardwareType} from {dateRented}\n\r" +
                                     $"Please return this by {dateReturned}\n\r" +
@@ -64,6 +77,15 @@ namespace CarRentalApp
             }
             
                       
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //select all from types of hardware table
+            var hardware = hardwareRentalEntities.TypesOfHardwares.ToList();
+            cmbEquipList.DisplayMember = "Name";
+            cmbEquipList.ValueMember = "id";
+            cmbEquipList.DataSource = hardware;
         }
     }
 }
