@@ -86,6 +86,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HardwareRentalDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="HardwareRentalDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HardwareRentalDb.edmx</DependentUpon>
+    </Compile>
     <Compile Include="HardwareRentalRecord.cs">
       <DependentUpon>HardwareRentalDb.tt</DependentUpon>
     </Compile>

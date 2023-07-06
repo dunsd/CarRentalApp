@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HardwareRentalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HardwareRentalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="HardwareRentalRecord">
           <Key>
             <PropertyRef Name="id" />
@@ -21,7 +21,9 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Value" Type="int" />
         </EntityType>
         <Association Name="FK_HardwareRentalRecord_TypesOfHardware">
           <End Role="TypesOfHardware" Type="Self.TypesOfHardware" Multiplicity="0..1" />
@@ -43,11 +45,18 @@
             <End Role="HardwareRentalRecord" EntitySet="HardwareRentalRecord" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HardwareRentalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HardwareRentalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="HardwareRentalRecords" EntityType="HardwareRentalModel.HardwareRentalRecord" />
+          <EntitySet Name="TypesOfHardwares" EntityType="HardwareRentalModel.TypesOfHardware" />
+          <AssociationSet Name="FK_HardwareRentalRecord_TypesOfHardware" Association="HardwareRentalModel.FK_HardwareRentalRecord_TypesOfHardware">
+            <End Role="TypesOfHardware" EntitySet="TypesOfHardwares" />
+            <End Role="HardwareRentalRecord" EntitySet="HardwareRentalRecords" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="HardwareRentalRecord">
           <Key>
             <PropertyRef Name="id" />
@@ -58,19 +67,21 @@
           <Property Name="DateReturned" Type="DateTime" Precision="3" />
           <Property Name="Cost" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="TypeOfHardwareId" Type="Int32" />
-          <NavigationProperty Name="TypesOfHardware" Relationship="Self.FK_HardwareRentalRecord_TypesOfHardware" FromRole="HardwareRentalRecord" ToRole="TypesOfHardware" />
+          <NavigationProperty Name="TypesOfHardware" Relationship="HardwareRentalModel.FK_HardwareRentalRecord_TypesOfHardware" FromRole="HardwareRentalRecord" ToRole="TypesOfHardware" />
         </EntityType>
         <EntityType Name="TypesOfHardware">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="HardwareRentalRecords" Relationship="Self.FK_HardwareRentalRecord_TypesOfHardware" FromRole="TypesOfHardware" ToRole="HardwareRentalRecord" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="Int32" />
+          <NavigationProperty Name="HardwareRentalRecords" Relationship="HardwareRentalModel.FK_HardwareRentalRecord_TypesOfHardware" FromRole="TypesOfHardware" ToRole="HardwareRentalRecord" />
         </EntityType>
         <Association Name="FK_HardwareRentalRecord_TypesOfHardware">
-          <End Role="TypesOfHardware" Type="Self.TypesOfHardware" Multiplicity="0..1" />
-          <End Role="HardwareRentalRecord" Type="Self.HardwareRentalRecord" Multiplicity="*" />
+          <End Type="HardwareRentalModel.TypesOfHardware" Role="TypesOfHardware" Multiplicity="0..1" />
+          <End Type="HardwareRentalModel.HardwareRentalRecord" Role="HardwareRentalRecord" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TypesOfHardware">
               <PropertyRef Name="id" />
@@ -80,14 +91,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HardwareRentalEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="HardwareRentalRecords" EntityType="Self.HardwareRentalRecord" />
-          <EntitySet Name="TypesOfHardwares" EntityType="Self.TypesOfHardware" />
-          <AssociationSet Name="FK_HardwareRentalRecord_TypesOfHardware" Association="Self.FK_HardwareRentalRecord_TypesOfHardware">
-            <End Role="TypesOfHardware" EntitySet="TypesOfHardwares" />
-            <End Role="HardwareRentalRecord" EntitySet="HardwareRentalRecords" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -97,20 +100,22 @@
           <EntitySetMapping Name="HardwareRentalRecords">
             <EntityTypeMapping TypeName="HardwareRentalModel.HardwareRentalRecord">
               <MappingFragment StoreEntitySet="HardwareRentalRecord">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="CustName" ColumnName="CustName" />
-                <ScalarProperty Name="DateRented" ColumnName="DateRented" />
-                <ScalarProperty Name="DateReturned" ColumnName="DateReturned" />
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
                 <ScalarProperty Name="TypeOfHardwareId" ColumnName="TypeOfHardwareId" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="DateReturned" ColumnName="DateReturned" />
+                <ScalarProperty Name="DateRented" ColumnName="DateRented" />
+                <ScalarProperty Name="CustName" ColumnName="CustName" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TypesOfHardwares">
             <EntityTypeMapping TypeName="HardwareRentalModel.TypesOfHardware">
               <MappingFragment StoreEntitySet="TypesOfHardware">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -39,16 +39,16 @@
             // dgHardwareList
             // 
             this.dgHardwareList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgHardwareList.Location = new System.Drawing.Point(267, 127);
+            this.dgHardwareList.Location = new System.Drawing.Point(81, 126);
             this.dgHardwareList.Name = "dgHardwareList";
-            this.dgHardwareList.Size = new System.Drawing.Size(259, 207);
+            this.dgHardwareList.Size = new System.Drawing.Size(440, 207);
             this.dgHardwareList.TabIndex = 0;
             // 
             // lblManageListing
             // 
             this.lblManageListing.AutoSize = true;
             this.lblManageListing.Font = new System.Drawing.Font("Georgia", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblManageListing.Location = new System.Drawing.Point(262, 97);
+            this.lblManageListing.Location = new System.Drawing.Point(76, 96);
             this.lblManageListing.Name = "lblManageListing";
             this.lblManageListing.Size = new System.Drawing.Size(264, 27);
             this.lblManageListing.TabIndex = 3;
@@ -56,7 +56,7 @@
             // 
             // btnAddHardware
             // 
-            this.btnAddHardware.Location = new System.Drawing.Point(592, 127);
+            this.btnAddHardware.Location = new System.Drawing.Point(554, 126);
             this.btnAddHardware.Name = "btnAddHardware";
             this.btnAddHardware.Size = new System.Drawing.Size(100, 38);
             this.btnAddHardware.TabIndex = 4;
@@ -66,7 +66,7 @@
             // 
             // btnEditHardware
             // 
-            this.btnEditHardware.Location = new System.Drawing.Point(592, 212);
+            this.btnEditHardware.Location = new System.Drawing.Point(554, 211);
             this.btnEditHardware.Name = "btnEditHardware";
             this.btnEditHardware.Size = new System.Drawing.Size(100, 38);
             this.btnEditHardware.TabIndex = 5;
@@ -76,7 +76,7 @@
             // 
             // btnDelHardware
             // 
-            this.btnDelHardware.Location = new System.Drawing.Point(592, 296);
+            this.btnDelHardware.Location = new System.Drawing.Point(554, 295);
             this.btnDelHardware.Name = "btnDelHardware";
             this.btnDelHardware.Size = new System.Drawing.Size(100, 38);
             this.btnDelHardware.TabIndex = 6;
@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(798, 477);
             this.Controls.Add(this.btnDelHardware);
             this.Controls.Add(this.btnEditHardware);
             this.Controls.Add(this.btnAddHardware);

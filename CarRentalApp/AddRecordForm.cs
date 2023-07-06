@@ -82,9 +82,11 @@ namespace CarRentalApp
         private void Form1_Load(object sender, EventArgs e)
         {
             //select all from types of hardware table
-            var hardware = hardwareRentalEntities.TypesOfHardwares.ToList();
-            cmbEquipList.DisplayMember = "Name";
-            cmbEquipList.ValueMember = "id";
+            var hardware = hardwareRentalEntities.TypesOfHardwares
+                .Select(query => new { Id = query.id, Type = query.Type, Serial = query.SerialNumber, Value = query.Value })
+                .ToList();                              
+            cmbEquipList.DisplayMember = "Type";
+            cmbEquipList.ValueMember = "Id";
             cmbEquipList.DataSource = hardware;
         }
     }

@@ -22,12 +22,14 @@ namespace HardwareRentalApp
         private void ManageHardwareListing_Load(object sender, EventArgs e)
         {
             var hardware = hardwareRentalEntities.TypesOfHardwares
-                .Select(query => new { ID = query.id, Name = query.name })
+                .Select(query => new { ID = query.id, Type = query.Type,
+                 Serial = query.SerialNumber, Value = query.Value })
                 .ToList();           
+       
             //var hardware = hardwareRentalEntities.TypesOfHardwares.ToList();
             dgHardwareList.DataSource = hardware;
-            dgHardwareList.Columns[0].HeaderText = "ID";
-            dgHardwareList.Columns[1].HeaderText = "Name";
+            /*dgHardwareList.Columns[0].HeaderText = "ID";
+            dgHardwareList.Columns[1].HeaderText = "Name";*/
             
 
         }
