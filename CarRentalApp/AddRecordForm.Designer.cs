@@ -150,7 +150,7 @@
             this.txtCost.Size = new System.Drawing.Size(231, 20);
             this.txtCost.TabIndex = 10;
             // 
-            // Form1
+            // AddRecordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -167,8 +167,8 @@
             this.Controls.Add(this.lblCustName);
             this.Controls.Add(this.txtCustName);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "AddRecordForm";
+            this.Text = "Add Rental Record";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

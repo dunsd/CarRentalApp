@@ -23,5 +23,19 @@ namespace HardwareRentalApp
             AddRecordForm addRecordForm = new AddRecordForm();
             addRecordForm.Show();
         }
+
+        private void addRentalRecordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddRecordForm addRecordForm = new AddRecordForm();
+            addRecordForm.MdiParent = this;
+            addRecordForm.Show();
+        }
+
+        private void manageHardwareListingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var hardwareListing = new ManageHardwareListing();
+            hardwareListing.MdiParent = this;
+            hardwareListing.Show();
+        }
     }
 }
