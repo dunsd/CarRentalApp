@@ -76,6 +76,12 @@
     <Compile Include="AddRecordForm.Designer.cs">
       <DependentUpon>AddRecordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddEditHardware.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEditHardware.Designer.cs">
+      <DependentUpon>AddEditHardware.cs</DependentUpon>
+    </Compile>
     <Compile Include="HardwareRentalDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -113,6 +119,9 @@
     </Compile>
     <EmbeddedResource Include="AddRecordForm.resx">
       <DependentUpon>AddRecordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddEditHardware.resx">
+      <DependentUpon>AddEditHardware.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>

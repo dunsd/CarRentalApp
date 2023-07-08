@@ -22,31 +22,58 @@ namespace HardwareRentalApp
         private void ManageHardwareListing_Load(object sender, EventArgs e)
         {
             var hardware = hardwareRentalEntities.TypesOfHardwares
-                .Select(query => new { ID = query.id, Type = query.Type,
-                 Serial = query.SerialNumber, Value = query.Value })
+                .Select(query => new { 
+                    id = query.id, 
+                    Type = query.Type,
+                    Serial = query.SerialNumber, 
+                    Value = query.Value,
+                    YearMade = query.YearMade,
+                })
                 .ToList();           
        
-            //var hardware = hardwareRentalEntities.TypesOfHardwares.ToList();
             dgHardwareList.DataSource = hardware;
-            /*dgHardwareList.Columns[0].HeaderText = "ID";
-            dgHardwareList.Columns[1].HeaderText = "Name";*/
+            //Add space to serial number header
+            dgHardwareList.Columns[2].HeaderText = "Serial Number";
+            dgHardwareList.Columns[0].Visible = true;
             
+
 
         }
 
         private void btnAddHardware_Click(object sender, EventArgs e)
         {
-
+            var addEditHardware = new AddEditHardware();
+            addEditHardware.MdiParent = this.MdiParent;
+            addEditHardware.Show();
         }
 
         private void btnEditHardware_Click(object sender, EventArgs e)
         {
+            //Get id of selected row
+            var id = (int)dgHardwareList.SelectedRows[0].Cells["id"].Value;
 
+            //query db for row matching id
+            var hardware = hardwareRentalEntities.TypesOfHardwares.FirstOrDefault(query => query.id == id);
+
+            //launch with queried row data
+            var addEditHardware = new AddEditHardware(hardware);
+            addEditHardware.MdiParent = this.MdiParent;
+            addEditHardware.Show();
         }
 
         private void btnDelHardware_Click(object sender, EventArgs e)
         {
+            //Get id of selected row
+            var id = (int)dgHardwareList.SelectedRows[0].Cells["id"].Value;
 
+            //query db for row matching id
+            var hardware = hardwareRentalEntities.TypesOfHardwares.FirstOrDefault(query => query.id == id);
+
+            //delete row from db
+            hardwareRentalEntities.TypesOfHardwares.Remove(hardware);
+            hardwareRentalEntities.SaveChanges();
+
+            dgHardwareList.Refresh();
         }
     }
 }
