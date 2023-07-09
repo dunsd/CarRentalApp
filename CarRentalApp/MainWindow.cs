@@ -18,15 +18,9 @@ namespace HardwareRentalApp
             InitializeComponent();
         }
 
-        private void btnAddRecord_Click(object sender, EventArgs e)
-        {
-            AddRecordForm addRecordForm = new AddRecordForm();
-            addRecordForm.Show();
-        }
-
         private void addRentalRecordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddRecordForm addRecordForm = new AddRecordForm();
+            AddEditRecord addRecordForm = new AddEditRecord();
             addRecordForm.MdiParent = this;
             addRecordForm.Show();
         }
@@ -36,6 +30,13 @@ namespace HardwareRentalApp
             var hardwareListing = new ManageHardwareListing();
             hardwareListing.MdiParent = this;
             hardwareListing.Show();
+        }
+
+        private void viewArchiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var manageRentalRecords = new ManageRentalRecords();
+            manageRentalRecords.MdiParent = this;
+            manageRentalRecords.Show();
         }
     }
 }

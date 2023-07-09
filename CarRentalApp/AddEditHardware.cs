@@ -102,8 +102,7 @@ namespace HardwareRentalApp
                         else 
                         { 
                             MessageBox.Show(errorMsg); 
-                        }
-                        
+                        }                        
                     }
                 }                                       
                 catch (Exception ex)

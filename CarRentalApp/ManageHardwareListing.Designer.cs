@@ -107,7 +107,7 @@
             this.Controls.Add(this.lblManageListing);
             this.Controls.Add(this.dgHardwareList);
             this.Name = "ManageHardwareListing";
-            this.Text = "ManageHardwareListing";
+            this.Text = "Manage Hardware Listing";
             this.Load += new System.EventHandler(this.ManageHardwareListing_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgHardwareList)).EndInit();
             this.ResumeLayout(false);

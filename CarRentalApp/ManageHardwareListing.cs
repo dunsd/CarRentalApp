@@ -21,26 +21,10 @@ namespace HardwareRentalApp
 
         private void ManageHardwareListing_Load(object sender, EventArgs e)
         {
-            var hardware = hardwareRentalEntities.TypesOfHardwares
-                .Select(query => new { 
-                    id = query.id, 
-                    Type = query.Type,
-                    Serial = query.SerialNumber, 
-                    Value = query.Value,
-                    YearMade = query.YearMade,
-                })
-                .ToList();           
-       
-            dgHardwareList.DataSource = hardware;
-            //Add space to serial number header
-            dgHardwareList.Columns[2].HeaderText = "Serial Number";
-            dgHardwareList.Columns[0].Visible = true;
-            
-
-
+            RefreshGrid();            
         }
 
-        public void RefreshGrid()
+        private void RefreshGrid()
         {
             var hardware = hardwareRentalEntities.TypesOfHardwares.Select(query =>
             new
@@ -66,31 +50,47 @@ namespace HardwareRentalApp
 
         private void btnEditHardware_Click(object sender, EventArgs e)
         {
-            //Get id of selected row
-            var id = (int)dgHardwareList.SelectedRows[0].Cells["id"].Value;
+            try
+            {
+                //Get id of selected row
+                var id = (int)dgHardwareList.SelectedRows[0].Cells["id"].Value;
 
-            //query db for row matching id
-            var hardware = hardwareRentalEntities.TypesOfHardwares.FirstOrDefault(query => query.id == id);
+                //query db for row matching id
+                var hardware = hardwareRentalEntities.TypesOfHardwares.FirstOrDefault(query => query.id == id);
 
-            //launch with queried row data
-            var addEditHardware = new AddEditHardware(hardware);
-            addEditHardware.MdiParent = this.MdiParent;
-            addEditHardware.Show();
+                //launch with queried row data
+                var addEditHardware = new AddEditHardware(hardware);
+                addEditHardware.MdiParent = this.MdiParent;
+                addEditHardware.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            
         }
 
         private void btnDelHardware_Click(object sender, EventArgs e)
         {
-            //Get id of selected row
-            var id = (int)dgHardwareList.SelectedRows[0].Cells["id"].Value;
+            try
+            {
+                //Get id of selected row
+                var id = (int)dgHardwareList.SelectedRows[0].Cells["id"].Value;
 
-            //query db for row matching id
-            var hardware = hardwareRentalEntities.TypesOfHardwares.FirstOrDefault(query => query.id == id);
+                //query db for row matching id
+                var hardware = hardwareRentalEntities.TypesOfHardwares.FirstOrDefault(query => query.id == id);
 
-            //delete row from db
-            hardwareRentalEntities.TypesOfHardwares.Remove(hardware);
-            hardwareRentalEntities.SaveChanges();
+                //delete row from db
+                hardwareRentalEntities.TypesOfHardwares.Remove(hardware);
+                hardwareRentalEntities.SaveChanges();
 
-            dgHardwareList.Refresh();
+                dgHardwareList.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
