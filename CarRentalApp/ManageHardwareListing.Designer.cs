@@ -42,6 +42,7 @@
             this.dgHardwareList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgHardwareList.Location = new System.Drawing.Point(81, 126);
             this.dgHardwareList.Name = "dgHardwareList";
+            this.dgHardwareList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgHardwareList.Size = new System.Drawing.Size(518, 207);
             this.dgHardwareList.TabIndex = 0;
             // 

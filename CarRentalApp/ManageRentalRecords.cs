@@ -22,9 +22,15 @@ namespace HardwareRentalApp
 
         private void btnAddRecord_Click(object sender, EventArgs e)
         {
-            var addEditRecord = new AddEditRecord();
-            addEditRecord.Show();
-            addEditRecord.MdiParent = this.MdiParent;
+            var openForms = Application.OpenForms.Cast<Form>();
+            bool isOpen = openForms.Any(query => query.Name == "AddEditRecord");
+            if(!isOpen)
+            {
+                var addEditRecord = new AddEditRecord(this);
+                addEditRecord.Show();
+                addEditRecord.MdiParent = this.MdiParent;
+            }
+            
         }
 
         private void btnEditRecord_Click(object sender, EventArgs e)
@@ -38,9 +44,15 @@ namespace HardwareRentalApp
                 var record = hardwareRentalEntities.HardwareRentalRecords.FirstOrDefault(query => query.id == id);
 
                 //launch with queried row data
-                var addEditRecord = new AddEditRecord(record);                
-                addEditRecord.Show();
-                addEditRecord.MdiParent = this.MdiParent;
+                var openForms = Application.OpenForms.Cast<Form>();
+                bool isOpen = openForms.Any(query => query.Name == "AddEditRecord");
+                if(!isOpen)
+                {
+                    var addEditRecord = new AddEditRecord(record, this);
+                    addEditRecord.Show();
+                    addEditRecord.MdiParent = this.MdiParent;
+                }
+                
             }
             catch (Exception ex)
             {
@@ -74,7 +86,7 @@ namespace HardwareRentalApp
         {
             PopulateGrid();
         }
-        private void PopulateGrid()
+        public void PopulateGrid()
         {
             var records = hardwareRentalEntities.HardwareRentalRecords.Select(query => new
             {

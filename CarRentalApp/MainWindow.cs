@@ -20,23 +20,39 @@ namespace HardwareRentalApp
 
         private void addRentalRecordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddEditRecord addRecordForm = new AddEditRecord();
-            addRecordForm.MdiParent = this;
-            addRecordForm.Show();
+            var openForms = Application.OpenForms.Cast<Form>();
+            bool isOpen = openForms.Any(query => query.Name == "AddEditRecord");
+            if(!isOpen)
+            {
+                AddEditRecord addRecordForm = new AddEditRecord();
+                addRecordForm.MdiParent = this;
+                addRecordForm.Show();
+            }
         }
 
         private void manageHardwareListingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var hardwareListing = new ManageHardwareListing();
-            hardwareListing.MdiParent = this;
-            hardwareListing.Show();
+            var openForms = Application.OpenForms.Cast<Form>();
+            bool isOpen = openForms.Any(query => query.Name == "ManageHardwareListing");
+            if(!isOpen)
+            {
+                var hardwareListing = new ManageHardwareListing();
+                hardwareListing.MdiParent = this;
+                hardwareListing.Show();
+            }            
         }
 
         private void viewArchiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var manageRentalRecords = new ManageRentalRecords();
-            manageRentalRecords.MdiParent = this;
-            manageRentalRecords.Show();
+            var openForms = Application.OpenForms.Cast<Form>();
+            bool isOpen = openForms.Any(query => query.Name == "ManageRentalRecords");
+            if(!isOpen)
+            {
+                var manageRentalRecords = new ManageRentalRecords();
+                manageRentalRecords.MdiParent = this;
+                manageRentalRecords.Show();
+            }
+            
         }
     }
 }

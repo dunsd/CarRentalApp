@@ -14,22 +14,25 @@ namespace HardwareRentalApp
     {
         private bool isEditMode;
         private HardwareRentalEntities hardwareRentalEntities;
+        private ManageHardwareListing _manageHardwareListing;
 
-        public AddEditHardware()
+        public AddEditHardware(ManageHardwareListing manageHardwareListing = null)
         {
             InitializeComponent();
             lblTitle.Text = "Add Vehicle";
             isEditMode = false;
             hardwareRentalEntities = new HardwareRentalEntities();
+            _manageHardwareListing = manageHardwareListing;
         }
 
-        public AddEditHardware(TypesOfHardware hardwareToEdit)
+        public AddEditHardware(TypesOfHardware hardwareToEdit, ManageHardwareListing manageHardwareListing = null)
         {
             InitializeComponent();
             lblTitle.Text = "Edit Vehicle";
             PopulateFields(hardwareToEdit);
             isEditMode = true;
             hardwareRentalEntities = new HardwareRentalEntities();
+            _manageHardwareListing = manageHardwareListing;
         }
 
         private void PopulateFields(TypesOfHardware hardware)
@@ -104,6 +107,8 @@ namespace HardwareRentalApp
                             MessageBox.Show(errorMsg); 
                         }                        
                     }
+                _manageHardwareListing.RefreshGrid();
+                Close();
                 }                                       
                 catch (Exception ex)
                 {

@@ -14,21 +14,24 @@ namespace CarRentalApp
     public partial class AddEditRecord : Form       
     {
         private readonly HardwareRentalEntities hardwareRentalEntities;
+        private ManageRentalRecords _manageRentalRecords;
         bool isEditMode;
-        public AddEditRecord()
+        public AddEditRecord(ManageRentalRecords manageRentalRecords = null)
         {            
             InitializeComponent();
             lblTitle.Text = "Add New Record";
             hardwareRentalEntities = new HardwareRentalEntities();
             isEditMode = false;
+            _manageRentalRecords = manageRentalRecords;
         }
-        public AddEditRecord(HardwareRentalRecord hardwareRentalRecord)
+        public AddEditRecord(HardwareRentalRecord hardwareRentalRecord, ManageRentalRecords manageRentalRecords = null)
         {
             hardwareRentalEntities = new HardwareRentalEntities();
             InitializeComponent();
             lblTitle.Text = "Edit Record";
             PopulateFields(hardwareRentalRecord);
             isEditMode = true;
+            _manageRentalRecords = manageRentalRecords;
             
         }
 
@@ -83,6 +86,7 @@ namespace CarRentalApp
                         record.TypeOfHardwareId = (int)cmbEquipList.SelectedValue;
 
                         hardwareRentalEntities.SaveChanges();
+                        _manageRentalRecords.PopulateGrid();
                         MessageBox.Show("Successfully updated record.");
                         Close();
                     }
@@ -108,6 +112,7 @@ namespace CarRentalApp
 
                         hardwareRentalEntities.HardwareRentalRecords.Add(rentalRecord);
                         hardwareRentalEntities.SaveChanges();
+                        _manageRentalRecords.PopulateGrid();
 
                         MessageBox.Show($"Thank you for renting {custName}!\n\r" +
                                         $"You have rented a {hardwareType} from {dateRented}\n\r" +

@@ -24,7 +24,7 @@ namespace HardwareRentalApp
             RefreshGrid();            
         }
 
-        private void RefreshGrid()
+        public void RefreshGrid()
         {
             var hardware = hardwareRentalEntities.TypesOfHardwares.Select(query =>
             new
@@ -43,9 +43,15 @@ namespace HardwareRentalApp
 
         private void btnAddHardware_Click(object sender, EventArgs e)
         {
-            var addEditHardware = new AddEditHardware();
-            addEditHardware.MdiParent = this.MdiParent;
-            addEditHardware.Show();
+            var openForms = Application.OpenForms.Cast<Form>();
+            bool isOpen = openForms.Any(query => query.Name == "AddEditHardware");
+            if(!isOpen)
+            {
+                var addEditHardware = new AddEditHardware(this);
+                addEditHardware.MdiParent = this.MdiParent;
+                addEditHardware.Show();
+            }
+            
         }
 
         private void btnEditHardware_Click(object sender, EventArgs e)
@@ -59,9 +65,15 @@ namespace HardwareRentalApp
                 var hardware = hardwareRentalEntities.TypesOfHardwares.FirstOrDefault(query => query.id == id);
 
                 //launch with queried row data
-                var addEditHardware = new AddEditHardware(hardware);
-                addEditHardware.MdiParent = this.MdiParent;
-                addEditHardware.Show();
+                var openForms = Application.OpenForms.Cast<Form>();
+                bool isOpen = openForms.Any(query => query.Name == "AddEditHardware");
+                if(!isOpen)
+                {
+                    var addEditHardware = new AddEditHardware(hardware, this);
+                    addEditHardware.MdiParent = this.MdiParent;
+                    addEditHardware.Show();
+                }
+                
             }
             catch (Exception ex)
             {

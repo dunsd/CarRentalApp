@@ -92,6 +92,7 @@
             this.dgRecordList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgRecordList.Location = new System.Drawing.Point(77, 121);
             this.dgRecordList.Name = "dgRecordList";
+            this.dgRecordList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgRecordList.Size = new System.Drawing.Size(518, 207);
             this.dgRecordList.TabIndex = 8;
             // 
