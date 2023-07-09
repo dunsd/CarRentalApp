@@ -35,40 +35,84 @@ namespace HardwareRentalApp
         private void PopulateFields(TypesOfHardware hardware)
         {
             lblId.Text = hardware.id.ToString();
-            lblType.Text = hardware.Type;
+            txtType.Text = hardware.Type;
             txtSerial.Text = hardware.SerialNumber;
             txtValue.Text = hardware.Value.ToString();
             txtYear.Text = hardware.YearMade.ToString();
         }
 
+       
+
         private void btnSaveChange_Click(object sender, EventArgs e)
-        {
-            if(isEditMode)
-            {
-                var id = int.Parse(lblId.Text);
-                var hardware = hardwareRentalEntities.TypesOfHardwares.FirstOrDefault(query => query.id == id);
-                hardware.Type = txtType.Text;
-                hardware.SerialNumber = txtSerial.Text;
-                hardware.Value = int.Parse(txtValue.Text);
-                hardware.YearMade = txtYear.Text;
-
-                hardwareRentalEntities.SaveChanges();
-            }
-            else
-            {
-                //Create new row of hardware type and add to table
-                var newHardware = new TypesOfHardware
+        {       
+                try
                 {
-                    Type = txtType.Text,
-                    SerialNumber = txtSerial.Text,
-                    Value = int.Parse(txtValue.Text),
-                    YearMade = txtYear.Text,
-                };
+                    //initialise error checks
+                    var errorMsg = "";
+                    bool formValid = true;
+                                        
+                    if(string.IsNullOrWhiteSpace(txtType.Text) 
+                        || string.IsNullOrWhiteSpace(txtSerial.Text))
+                    {
+                        formValid = false;
+                        errorMsg += "Error: Please fill out all required fields. \n\r";
 
-                hardwareRentalEntities.TypesOfHardwares.Add(newHardware);
-                hardwareRentalEntities.SaveChanges();
+                    }
+                    //Handle submit in edit mode
+                    if(isEditMode)
+                    {
+                        var id = int.Parse(lblId.Text);
+
+                        if (formValid)
+                        {
+                            //Update row matching id
+                            var hardware = hardwareRentalEntities.TypesOfHardwares.FirstOrDefault(query => query.id == id);
+                            hardware.Type = txtType.Text;
+                            hardware.SerialNumber = txtSerial.Text;
+                            hardware.Value = int.Parse(txtValue.Text);
+                            hardware.YearMade = txtYear.Text;
+                            hardwareRentalEntities.SaveChanges();
+                            MessageBox.Show("Record edited successfully\n\r" +
+                            "Please refresh to show the changes");
+                        }
+                        else
+                        {
+                            MessageBox.Show(errorMsg);
+                        }
+                    }
+                    else
+                    {
+                        //Handle new record
+                        if(formValid)
+                        {
+                            //Create new row of hardware type and add to table
+                            var newHardware = new TypesOfHardware
+                            {
+                                Type = txtType.Text,
+                                SerialNumber = txtSerial.Text,
+                                Value = int.Parse(txtValue.Text),
+                                YearMade = txtYear.Text,
+                            };
+
+                            hardwareRentalEntities.TypesOfHardwares.Add(newHardware);
+                            hardwareRentalEntities.SaveChanges();
+                            MessageBox.Show("Record added successfully\n\r" +
+                            "Please refresh to show the changes");
+                        }
+                        else 
+                        { 
+                            MessageBox.Show(errorMsg); 
+                        }
+                        
+                    }
+                }                                       
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
             }
-        }
+        
 
         private void btnCancel_Click(object sender, EventArgs e)
         {

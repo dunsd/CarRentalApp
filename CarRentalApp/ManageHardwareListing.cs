@@ -40,6 +40,23 @@ namespace HardwareRentalApp
 
         }
 
+        public void RefreshGrid()
+        {
+            var hardware = hardwareRentalEntities.TypesOfHardwares.Select(query =>
+            new
+            {
+                id = query.id,
+                Type = query.Type,
+                SerialNumber = query.SerialNumber,
+                Value = query.Value,
+                YearMade = query.YearMade,
+            })
+            .ToList();
+            dgHardwareList.DataSource = hardware;
+            dgHardwareList.Columns[2].HeaderText = "Serial Number";
+            dgHardwareList.Columns[0].Visible = true;
+        }
+
         private void btnAddHardware_Click(object sender, EventArgs e)
         {
             var addEditHardware = new AddEditHardware();
@@ -74,6 +91,11 @@ namespace HardwareRentalApp
             hardwareRentalEntities.SaveChanges();
 
             dgHardwareList.Refresh();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshGrid();
         }
     }
 }
