@@ -40,17 +40,17 @@
             // dgHardwareList
             // 
             this.dgHardwareList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgHardwareList.Location = new System.Drawing.Point(81, 126);
+            this.dgHardwareList.Location = new System.Drawing.Point(59, 126);
             this.dgHardwareList.Name = "dgHardwareList";
             this.dgHardwareList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgHardwareList.Size = new System.Drawing.Size(518, 207);
+            this.dgHardwareList.Size = new System.Drawing.Size(544, 207);
             this.dgHardwareList.TabIndex = 0;
             // 
             // lblManageListing
             // 
             this.lblManageListing.AutoSize = true;
             this.lblManageListing.Font = new System.Drawing.Font("Georgia", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblManageListing.Location = new System.Drawing.Point(76, 96);
+            this.lblManageListing.Location = new System.Drawing.Point(54, 96);
             this.lblManageListing.Name = "lblManageListing";
             this.lblManageListing.Size = new System.Drawing.Size(264, 27);
             this.lblManageListing.TabIndex = 3;
@@ -88,9 +88,9 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(81, 368);
+            this.btnRefresh.Location = new System.Drawing.Point(59, 368);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.Size = new System.Drawing.Size(101, 23);
             this.btnRefresh.TabIndex = 7;
             this.btnRefresh.Text = "Refresh List";
             this.btnRefresh.UseVisualStyleBackColor = true;

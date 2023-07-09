@@ -92,11 +92,20 @@ namespace HardwareRentalApp
                 //query db for row matching id
                 var hardware = hardwareRentalEntities.TypesOfHardwares.FirstOrDefault(query => query.id == id);
 
-                //delete row from db
-                hardwareRentalEntities.TypesOfHardwares.Remove(hardware);
-                hardwareRentalEntities.SaveChanges();
+                DialogResult drCheck = MessageBox.Show("Are you sure you want to delete this hardware listing?",
+                    "Delete", MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Warning);
+                if(drCheck == DialogResult.Yes)
+                {
+                    //delete row from db
+                    hardwareRentalEntities.TypesOfHardwares.Remove(hardware);
+                    hardwareRentalEntities.SaveChanges();
+                }
 
-                dgHardwareList.Refresh();
+
+
+                RefreshGrid();
+                //dgHardwareList.Refresh();
             }
             catch (Exception ex)
             {

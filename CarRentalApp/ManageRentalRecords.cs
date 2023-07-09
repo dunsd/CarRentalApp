@@ -70,9 +70,16 @@ namespace HardwareRentalApp
                 //query db for row matching id
                 var record = hardwareRentalEntities.HardwareRentalRecords.FirstOrDefault(query => query.id == id);
 
-                //delete row from db
-                hardwareRentalEntities.HardwareRentalRecords.Remove(record);
-                hardwareRentalEntities.SaveChanges();
+                DialogResult drCheck = MessageBox.Show("Are you sure you want to delete this record?",
+                    "Delete", MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Warning);
+                if (drCheck == DialogResult.Yes)
+                {
+                    //delete row from db
+                    hardwareRentalEntities.HardwareRentalRecords.Remove(record);
+                    hardwareRentalEntities.SaveChanges();
+                }
+
 
                 PopulateGrid();
             }

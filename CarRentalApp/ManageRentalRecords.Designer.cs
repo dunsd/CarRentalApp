@@ -39,9 +39,9 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(77, 363);
+            this.btnRefresh.Location = new System.Drawing.Point(59, 363);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.Size = new System.Drawing.Size(92, 23);
             this.btnRefresh.TabIndex = 13;
             this.btnRefresh.Text = "Refresh List";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -81,7 +81,7 @@
             // 
             this.lblManageRecords.AutoSize = true;
             this.lblManageRecords.Font = new System.Drawing.Font("Georgia", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblManageRecords.Location = new System.Drawing.Point(72, 91);
+            this.lblManageRecords.Location = new System.Drawing.Point(54, 91);
             this.lblManageRecords.Name = "lblManageRecords";
             this.lblManageRecords.Size = new System.Drawing.Size(243, 27);
             this.lblManageRecords.TabIndex = 9;
@@ -90,10 +90,10 @@
             // dgRecordList
             // 
             this.dgRecordList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgRecordList.Location = new System.Drawing.Point(77, 121);
+            this.dgRecordList.Location = new System.Drawing.Point(59, 121);
             this.dgRecordList.Name = "dgRecordList";
             this.dgRecordList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgRecordList.Size = new System.Drawing.Size(518, 207);
+            this.dgRecordList.Size = new System.Drawing.Size(535, 207);
             this.dgRecordList.TabIndex = 8;
             // 
             // ManageRentalRecords
