@@ -27,5 +27,6 @@ namespace HardwareRentalApp
     
         public virtual DbSet<HardwareRentalRecord> HardwareRentalRecords { get; set; }
         public virtual DbSet<TypesOfHardware> TypesOfHardwares { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

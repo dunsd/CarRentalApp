@@ -13,6 +13,12 @@ namespace HardwareRentalApp
 {
     public partial class MainWindow : Form
     {
+        private Login _login;
+        public MainWindow(Login login)
+        {
+            InitializeComponent();
+            _login = login;
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -53,6 +59,11 @@ namespace HardwareRentalApp
                 manageRentalRecords.Show();
             }
             
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _login.Close();
         }
     }
 }

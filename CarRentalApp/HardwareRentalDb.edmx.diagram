@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="HardwareRentalModel.HardwareRentalRecord" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="HardwareRentalModel.TypesOfHardware" Width="1.5" PointX="0.75" PointY="1.125" />
         <AssociationConnector Association="HardwareRentalModel.FK_HardwareRentalRecord_TypesOfHardware" />
+        <EntityTypeShape EntityType="HardwareRentalModel.User" Width="1.5" PointX="1.875" PointY="4.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

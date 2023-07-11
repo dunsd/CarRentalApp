@@ -26,6 +26,14 @@
           <Property Name="Value" Type="int" />
           <Property Name="YearMade" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <Association Name="FK_HardwareRentalRecord_TypesOfHardware">
           <End Role="TypesOfHardware" Type="Self.TypesOfHardware" Multiplicity="0..1" />
           <End Role="HardwareRentalRecord" Type="Self.HardwareRentalRecord" Multiplicity="*" />
@@ -41,6 +49,7 @@
         <EntityContainer Name="HardwareRentalModelStoreContainer">
           <EntitySet Name="HardwareRentalRecord" EntityType="Self.HardwareRentalRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypesOfHardware" EntityType="Self.TypesOfHardware" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_HardwareRentalRecord_TypesOfHardware" Association="Self.FK_HardwareRentalRecord_TypesOfHardware">
             <End Role="TypesOfHardware" EntitySet="TypesOfHardware" />
             <End Role="HardwareRentalRecord" EntitySet="HardwareRentalRecord" />
@@ -57,6 +66,7 @@
             <End Role="TypesOfHardware" EntitySet="TypesOfHardwares" />
             <End Role="HardwareRentalRecord" EntitySet="HardwareRentalRecords" />
           </AssociationSet>
+          <EntitySet Name="Users" EntityType="HardwareRentalModel.User" />
         </EntityContainer>
         <EntityType Name="HardwareRentalRecord">
           <Key>
@@ -93,6 +103,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -118,6 +136,15 @@
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="HardwareRentalModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
