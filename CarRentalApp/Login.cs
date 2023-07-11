@@ -21,6 +21,7 @@ namespace HardwareRentalApp
             hardwareRentalEntities = new HardwareRentalEntities();
         }
 
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             try
@@ -61,6 +62,36 @@ namespace HardwareRentalApp
             {
                 Console.WriteLine(ex.Message);
                 MessageBox.Show("An error occurred logging in");
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
+        }
+
+        private void btnLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
+        }
+
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+                e.SuppressKeyPress = true;
+                e.Handled = true;
             }
         }
     }
